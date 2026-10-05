@@ -98,6 +98,11 @@ jobs:
           name: processed-data
           path: data/processed/featured_house_data.csv
 
+      - name: Print Processed Data Content
+        run: |
+          echo "--- data/processed/featured_house_data.csv ---"
+          cat data/processed/featured_house_data.csv
+
       - name: Setup MLflow Tracking Server
         run: |
           docker pull ghcr.io/mlflow/mlflow:latest
@@ -152,11 +157,22 @@ jobs:
           name: trained-model
           path: models/trained/house_price_model.pkl
 
+
+      - name: Check Trained Model file
+        run: |
+          echo "--- models/trained/house_price_model.pkl ---"
+          ls -l models/trained/house_price_model.pkl
+
       - name: Download Preprocessor
         uses: actions/download-artifact@v4
         with:
           name: preprocessor
           path: models/trained/preprocessor.pkl
+
+      - name: Check Preprocessor file
+        run: |
+          echo "--- models/trained/preprocessor.pkl ---"
+          ls -l models/trained/preprocessor.pkl
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3    
