@@ -190,7 +190,7 @@ jobs:
      
       - name: Push Docker Image
         uses: docker/build-push-action@v6
-        run:
+        run: |
           COMMIT_HASH=$(echo "${GITHUB_SHA}" | cut -c1-7)
           docker tag ${vars.DOCKERHUB_USERNAME}/house-price-model:${COMMIT_HASH} ${vars.DOCKERHUB_USERNAME}/house-price-model:latest
           docker push ${vars.DOCKERHUB_USERNAME}/house-price-model:${COMMIT_HASH}
