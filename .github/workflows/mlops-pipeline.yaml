@@ -147,13 +147,13 @@ jobs:
         uses: actions/checkout@v3 
 
       - name: Download Trained Model
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: trained-model
           path: models/
 
       - name: Download Preprocessor
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: preprocessor
           path: models/trained/
